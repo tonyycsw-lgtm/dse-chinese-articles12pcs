@@ -1,5 +1,5 @@
 @meta {
-  "title": "荀子《勤學》",
+  "title": "荀子《勤學》君子生非異也，善假於物也。",
   "author": "DSE中文教研組",
   "id": "xunzi-qinxue",
   "date": "2026-02-10"
