@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{SITE_TITLE}}</title>
+    <link rel="stylesheet" href="{{BASE_URL}}/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{BASE_URL}}/assets/images/favicon.ico">
+    <meta name="description" content="{{SITE_DESCRIPTION}}">
+    <meta name="keywords" content="DSE中文,指定篇章,學習平台,文言文,荀子,孟子,莊子">
+</head>
+<body>
+    <!-- 導航欄 -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>{{SITE_TITLE}}</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#articles">所有篇章</a></li>
+                    <li><a href="#about">關於平台</a></li>
+                    <li><a href="#resources">學習資源</a></li>
+                    <li><a href="#contact">聯絡我們</a></li>
+                    <li><a href="#" class="nav-cta"><i class="fas fa-graduation-cap"></i> 開始學習</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" aria-label="導航菜單">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 主內容區 -->
+    <main class="container">
+        <!-- 英雄區域 -->
+        <div class="hero">
+            <h1>DSE中文指定篇章學習平台</h1>
+            <p class="hero-subtitle">專為香港中學文憑考試（DSE）中文科設計的完整學習方案</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-book"></i>
+                    <span class="stat-number">{{ARTICLE_COUNT}}</span>
+                    <span class="stat-label">指定篇章</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">核心考核</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-brain"></i>
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">互動練習</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-clock"></i>
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">隨時學習</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#articles" class="btn btn-primary">
+                    <i class="fas fa-book-reader"></i> 開始學習
+                </a>
+                <a href="#about" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i> 了解平台
+                </a>
+            </div>
+        </div>
+
+        <!-- 文章列表 -->
+        <section id="articles" class="card">
+            <div class="card-header">
+                <h2>指定篇章列表 <span class="dse-tag">{{ARTICLE_COUNT}}篇</span></h2>
+                <div class="card-icon">
+                    <i class="fas fa-list-ol"></i>
+                </div>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="搜索文章、作者或關鍵詞...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            
+            <div class="filter-tags">
+                <span class="filter-label">篩選：</span>
+                <button class="filter-tag active" data-filter="all">全部</button>
+                <button class="filter-tag" data-filter="儒家">儒家</button>
+                <button class="filter-tag" data-filter="道家">道家</button>
+                <button class="filter-tag" data-filter="史傳">史傳</button>
+                <button class="filter-tag" data-filter="議論文">議論文</button>
+            </div>
+            
+            <div class="articles-grid" id="articlesGrid">
+                {{ARTICLES_HTML}}
+            </div>
+            
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search fa-3x"></i>
+                <h3>沒有找到相關文章</h3>
+                <p>請嘗試其他搜索關鍵詞或篩選條件</p>
+            </div>
+        </section>
+
+        <!-- 關於平台 -->
+        <section id="about" class="card">
+            <div class="card-header">
+                <h2>關於平台</h2>
+                <div class="card-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-section">
+                    <h3><i class="fas fa-bullseye"></i> 平台目標</h3>
+                    <p>本平台旨在為DSE中文科考生提供全面、系統化的指定篇章學習資源，幫助學生深入理解經典文本，掌握考試重點，提升中文素養。</p>
+                </div>
+                
+                <div class="about-section">
+                    <h3><i class="fas fa-star"></i> 平台特色</h3>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <h4>淺白講解</h4>
+                            <p>將文言文轉化為易懂的白話，適合中學生理解</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h4>互動練習</h4>
+                            <p>多種題型測試理解程度，即時反饋學習效果</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-bookmark"></i>
+                            </div>
+                            <h4>考試重點</h4>
+                            <p>標註DSE考核重點，幫助學生針對性備考</p>
+                        </div>
+                        
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                            <h4>寫作應用</h4>
+                            <p>指導如何將經典觀點應用於作文寫作</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <h3><i class="fas fa-chart-line"></i> 學習成效</h3>
+                    <div class="progress-stats">
+                        <div class="progress-item">
+                            <div class="progress-label">理解深度</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <div class="progress-value">85%</div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-label">記憶效果</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%"></div>
+                            </div>
+                            <div class="progress-value">78%</div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-label">應用能力</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 72%"></div>
+                            </div>
+                            <div class="progress-value">72%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 學習資源 -->
+        <section id="resources" class="card">
+            <div class="card-header">
+                <h2>學習資源</h2>
+                <div class="card-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+            </div>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>學習筆記</h3>
+                    <p>各篇章的PDF學習筆記，方便下載打印</p>
+                    <a href="#" class="resource-link">
+                        下載 <i class="fas fa-download"></i>
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>教學視頻</h3>
+                    <p>名師講解視頻，深入分析篇章要點</p>
+                    <a href="#" class="resource-link">
+                        觀看 <i class="fas fa-play"></i>
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h3>模擬試題</h3>
+                    <p>歷屆試題與模擬練習，檢驗學習成果</p>
+                    <a href="#" class="resource-link">
+                        練習 <i class="fas fa-pencil-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>學習報告</h3>
+                    <p>個人學習進度分析與建議</p>
+                    <a href="#" class="resource-link">
+                        查看 <i class="fas fa-chart-line"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁腳 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>DSE中文學習平台</h3>
+                    <p>專為香港中學文憑考試中文科設計的完整學習解決方案，幫助學生高效備考，提升語文素養。</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>指定篇章</h3>
+                    <ul>
+                        <li><a href="xunzi-qinxue.html">荀子《勤學》</a></li>
+                        <li><a href="mengzi-renyi.html">孟子《論仁義》</a></li>
+                        <li><a href="#">莊子《逍遙遊》</a></li>
+                        <li><a href="#">論語《論仁》</a></li>
+                        <li><a href="#">史記《廉頗藺相如列傳》</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>學習工具</h3>
+                    <ul>
+                        <li><a href="#">互動測驗</a></li>
+                        <li><a href="#">記憶卡片</a></li>
+                        <li><a href="#">寫作練習</a></li>
+                        <li><a href="#">進度追蹤</a></li>
+                        <li><a href="#">錯題本</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>聯絡我們</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> contact@chinese-learning.hk</li>
+                        <li><i class="fas fa-phone"></i> +852 1234 5678</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 香港九龍塘</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© {{BUILD_DATE}} DSE中文指定篇章學習平台 | 本平台內容僅供學習參考</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #94a3b8;">
+                    最後更新: {{BUILD_DATE}} | 
+                    <a href="sitemap.xml" style="color: #94a3b8;">網站地圖</a> | 
+                    <a href="articles.json" style="color: #94a3b8;">文章索引</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="{{BASE_URL}}/assets/js/app.js"></script>
+    <script>
+        // 首頁特定功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 搜索功能
+            const searchInput = document.getElementById('searchInput');
+            const articlesGrid = document.getElementById('articlesGrid');
+            const articles = articlesGrid.querySelectorAll('.article-card');
+            const noResults = document.getElementById('noResults');
+            const filterTags = document.querySelectorAll('.filter-tag');
+            
+            // 搜索功能
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+                
+                articles.forEach(article => {
+                    const title = article.querySelector('h3').textContent.toLowerCase();
+                    const author = article.querySelector('.article-author').textContent.toLowerCase();
+                    const tags = article.querySelector('.article-tags').textContent.toLowerCase();
+                    const excerpt = article.querySelector('.article-excerpt').textContent.toLowerCase();
+                    
+                    const match = title.includes(query) || 
+                                 author.includes(query) || 
+                                 tags.includes(query) || 
+                                 excerpt.includes(query);
+                    
+                    article.style.display = match ? 'block' : 'none';
+                    if (match) visibleCount++;
+                });
+                
+                // 顯示/隱藏無結果提示
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            });
+            
+            // 篩選功能
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const filter = this.dataset.filter;
+                    
+                    // 更新激活狀態
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 篩選文章
+                    let visibleCount = 0;
+                    
+                    articles.forEach(article => {
+                        const articleTags = article.querySelector('.article-tags').textContent;
+                        
+                        if (filter === 'all' || articleTags.includes(filter)) {
+                            article.style.display = 'block';
+                            visibleCount++;
+                        } else {
+                            article.style.display = 'none';
+                        }
+                    });
+                    
+                    // 顯示/隱藏無結果提示
+                    noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+                });
+            });
+            
+            // 導航菜單切換
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('nav ul');
+            
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+            });
+            
+            // 平滑滾動
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const yOffset = -80;
+                        const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        
+                        window.scrollTo({
+                            top: y,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 關閉移動端菜單
+                        if (window.innerWidth <= 768) {
+                            navMenu.classList.remove('show');
+                        }
+                    }
+                });
+            });
+            
+            // 載入文章索引
+            fetch('articles.json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('已載入文章索引:', data.articles.length, '篇文章');
+                })
+                .catch(error => {
+                    console.error('載入文章索引失敗:', error);
+                });
+        });
+    </script>
+</body>
+</html>
