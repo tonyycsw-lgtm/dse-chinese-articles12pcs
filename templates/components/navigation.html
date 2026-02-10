@@ -1,0 +1,168 @@
+<!-- templates/components/navigation.html -->
+<div class="navigation-component" data-article-id="{{ARTICLE_ID}}">
+    <div class="navigation-header">
+        <h4><i class="fas fa-sitemap"></i> 文章導航</h4>
+        <button class="toggle-navigation">
+            <i class="fas fa-chevron-down"></i>
+        </button>
+    </div>
+    
+    <div class="navigation-content">
+        <!-- 章節導航 -->
+        <div class="section-navigation">
+            <h5>章節目錄</h5>
+            <ul class="section-list">
+                {{#each SECTIONS}}
+                <li class="section-item {{#if this.active}}active{{/if}}" 
+                    data-section-id="{{this.id}}">
+                    <a href="#{{this.id}}" class="section-link">
+                        <i class="fas fa-{{this.icon}}"></i>
+                        <span class="section-title">{{this.title}}</span>
+                        {{#if this.tag}}
+                        <span class="section-tag">{{this.tag}}</span>
+                        {{/if}}
+                        <span class="section-time">{{this.time}}</span>
+                    </a>
+                    {{#if this.subsections}}
+                    <ul class="subsection-list">
+                        {{#each this.subsections}}
+                        <li class="subsection-item">
+                            <a href="#{{this.id}}">
+                                <i class="fas fa-circle"></i>
+                                {{this.title}}
+                            </a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    {{/if}}
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        
+        <!-- 進度追蹤 -->
+        <div class="progress-navigation">
+            <h5>學習進度</h5>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{PROGRESS_PERCENTAGE}}%"></div>
+            </div>
+            <div class="progress-info">
+                <span class="progress-text">完成度: {{PROGRESS_PERCENTAGE}}%</span>
+                <span class="progress-time">預計剩餘: {{REMAINING_TIME}}</span>
+            </div>
+            
+            <div class="progress-details">
+                <div class="detail-item">
+                    <i class="fas fa-book"></i>
+                    <span>已閱讀: {{READ_SECTIONS}}/{{TOTAL_SECTIONS}}章</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>已完成: {{COMPLETED_QUIZZES}}/{{TOTAL_QUIZZES}}題</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-clock"></i>
+                    <span>學習時間: {{STUDY_TIME}}</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 快速跳轉 -->
+        <div class="quick-navigation">
+            <h5>快速跳轉</h5>
+            <div class="quick-links">
+                <a href="#original-text" class="quick-link">
+                    <i class="fas fa-scroll"></i> 原文
+                </a>
+                <a href="#quiz-section" class="quick-link">
+                    <i class="fas fa-brain"></i> 測驗
+                </a>
+                <a href="#memory-cards" class="quick-link">
+                    <i class="fas fa-layer-group"></i> 記憶卡片
+                </a>
+                <a href="#writing-guide" class="quick-link">
+                    <i class="fas fa-pen-fancy"></i> 寫作指南
+                </a>
+                <a href="#exam-tips" class="quick-link">
+                    <i class="fas fa-graduation-cap"></i> 考試技巧
+                </a>
+                <a href="#resources" class="quick-link">
+                    <i class="fas fa-download"></i> 資源下載
+                </a>
+            </div>
+        </div>
+        
+        <!-- 相關文章 -->
+        <div class="related-navigation">
+            <h5>相關文章</h5>
+            <div class="related-articles">
+                {{#each RELATED_ARTICLES}}
+                <a href="{{this.url}}" class="related-article">
+                    <div class="related-icon">
+                        <i class="fas fa-{{this.icon}}"></i>
+                    </div>
+                    <div class="related-info">
+                        <div class="related-title">{{this.title}}</div>
+                        <div class="related-author">{{this.author}}</div>
+                        <div class="related-tags">
+                            {{#each this.tags}}
+                            <span class="tag">{{this}}</span>
+                            {{/each}}
+                        </div>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+        </div>
+        
+        <!-- 學習工具 -->
+        <div class="tools-navigation">
+            <h5>學習工具</h5>
+            <div class="tool-buttons">
+                <button class="tool-btn" data-tool="bookmark">
+                    <i class="fas fa-bookmark"></i> 添加書籤
+                </button>
+                <button class="tool-btn" data-tool="highlight">
+                    <i class="fas fa-highlighter"></i> 高亮重點
+                </button>
+                <button class="tool-btn" data-tool="notes">
+                    <i class="fas fa-sticky-note"></i> 添加筆記
+                </button>
+                <button class="tool-btn" data-tool="print">
+                    <i class="fas fa-print"></i> 打印頁面
+                </button>
+                <button class="tool-btn" data-tool="download">
+                    <i class="fas fa-download"></i> 下載PDF
+                </button>
+                <button class="tool-btn" data-tool="share">
+                    <i class="fas fa-share-alt"></i> 分享文章
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 固定底部導航 -->
+    <div class="navigation-footer">
+        <button class="nav-btn prev-article" data-action="prev">
+            <i class="fas fa-arrow-left"></i>
+            <span class="btn-label">上一篇</span>
+        </button>
+        
+        <div class="nav-center">
+            <button class="nav-btn toggle-sidebar" data-action="sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button class="nav-btn go-top" data-action="top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <button class="nav-btn go-bottom" data-action="bottom">
+                <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+        
+        <button class="nav-btn next-article" data-action="next">
+            <span class="btn-label">下一篇</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</div>
