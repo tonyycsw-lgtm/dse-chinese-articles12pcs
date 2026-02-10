@@ -1,0 +1,60 @@
+// articles/index.json
+{
+  "site": {
+    "name": "DSE中文指定篇章學習平台",
+    "description": "香港中學文憑考試中文科指定篇章學習資源",
+    "version": "1.0.0",
+    "last_updated": "2024-01-01"
+  },
+  "articles": [
+    {
+      "id": "xunzi-qinxue",
+      "title": "荀子《勤學》",
+      "author": "荀子",
+      "filename": "xunzi-qinxue.md",
+      "genre": "議論文",
+      "importance": 5,
+      "tags": ["儒家", "性惡論", "學習", "修身"],
+      "dse_focus": ["比喻論證", "對比手法", "中心論點"],
+      "word_count": 3500,
+      "study_time": "6-8小時",
+      "quiz_count": 4,
+      "memory_cards": 6
+    },
+    {
+      "id": "mengzi-renyi",
+      "title": "孟子《論仁義》",
+      "author": "孟子",
+      "filename": "mengzi-renyi.md",
+      "genre": "議論文",
+      "importance": 4,
+      "tags": ["儒家", "性善論", "仁政", "民本"],
+      "dse_focus": ["性善論", "仁政思想", "論證技巧"],
+      "word_count": 2800,
+      "study_time": "5-7小時",
+      "quiz_count": 3,
+      "memory_cards": 4
+    },
+    {
+      "id": "zhuangzi-xiaoyaoyou",
+      "title": "莊子《逍遙遊》",
+      "author": "莊子",
+      "filename": "zhuangzi-xiaoyaoyou.md",
+      "genre": "寓言散文",
+      "importance": 4,
+      "tags": ["道家", "逍遙", "寓言", "哲學"],
+      "dse_focus": ["寓言手法", "道家思想", "語言特色"],
+      "word_count": 3200,
+      "study_time": "6-8小時",
+      "quiz_count": 3,
+      "memory_cards": 5
+    }
+  ],
+  "statistics": {
+    "total_articles": 3,
+    "total_words": 9500,
+    "total_quizzes": 10,
+    "total_memory_cards": 15,
+    "average_study_time": "6小時"
+  }
+}
