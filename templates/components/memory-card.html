@@ -1,0 +1,151 @@
+<!-- templates/components/memory-card.html -->
+<div class="memory-card-component" data-card-index="{{CARD_INDEX}}">
+    <div class="memory-card {{#if FLIPPED}}flipped{{/if}}" 
+         onclick="this.classList.toggle('flipped')"
+         tabindex="0"
+         role="button"
+         aria-label="點擊翻轉記憶卡片">
+        
+        <div class="memory-card-inner">
+            <!-- 卡片正面 -->
+            <div class="memory-card-front">
+                <div class="card-corner top-left">
+                    <i class="fas fa-bookmark"></i>
+                </div>
+                <div class="card-corner top-right">
+                    <span class="card-number">#{{CARD_NUMBER}}</span>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-icon">
+                        <i class="{{CARD_FRONT_ICON}}"></i>
+                    </div>
+                    <h4 class="card-title">{{CARD_FRONT_TITLE}}</h4>
+                    <div class="card-text">
+                        {{CARD_FRONT_CONTENT}}
+                    </div>
+                    {{#if CARD_FRONT_SUBTITLE}}
+                    <div class="card-subtitle">
+                        {{CARD_FRONT_SUBTITLE}}
+                    </div>
+                    {{/if}}
+                </div>
+                
+                <div class="card-corner bottom-left">
+                    <span class="card-tag">{{CARD_TAG}}</span>
+                </div>
+                <div class="card-corner bottom-right">
+                    <i class="fas fa-redo"></i>
+                </div>
+                
+                <div class="card-hint">
+                    <i class="fas fa-hand-point-up"></i> 點擊翻轉
+                </div>
+            </div>
+            
+            <!-- 卡片背面 -->
+            <div class="memory-card-back">
+                <div class="card-corner top-left">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div class="card-corner top-right">
+                    <span class="card-difficulty">{{CARD_DIFFICULTY}}</span>
+                </div>
+                
+                <div class="card-content">
+                    <h4 class="card-title">{{CARD_BACK_TITLE}}</h4>
+                    <div class="card-text">
+                        {{CARD_BACK_CONTENT}}
+                    </div>
+                    
+                    {{#if CARD_BACK_EXAMPLES}}
+                    <div class="card-examples">
+                        <h5><i class="fas fa-list-ul"></i> 應用示例</h5>
+                        <ul>
+                            {{#each CARD_BACK_EXAMPLES}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    {{/if}}
+                    
+                    {{#if CARD_BACK_TIPS}}
+                    <div class="card-tips">
+                        <h5><i class="fas fa-tips"></i> 學習提示</h5>
+                        <p>{{CARD_BACK_TIPS}}</p>
+                    </div>
+                    {{/if}}
+                </div>
+                
+                <div class="card-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span>記憶時間: {{CARD_STUDY_TIME}}</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-star"></i>
+                        <span>重要性: {{CARD_IMPORTANCE}}/5</span>
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    {{#if CARD_FOOTER}}
+                    <p class="card-footer-text">{{CARD_FOOTER}}</p>
+                    {{/if}}
+                    <button class="btn btn-sm mark-learned">
+                        <i class="fas fa-check"></i> 標記為已學
+                    </button>
+                </div>
+                
+                <div class="card-actions">
+                    <button class="action-btn" onclick="event.stopPropagation(); this.closest('.memory-card').classList.remove('flipped')">
+                        <i class="fas fa-undo"></i> 返回
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); shareCard({{CARD_INDEX}})">
+                        <i class="fas fa-share"></i> 分享
+                    </button>
+                    <button class="action-btn" onclick="event.stopPropagation(); saveCard({{CARD_INDEX}})">
+                        <i class="fas fa-save"></i> 保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-controls">
+        <button class="control-btn prev-card" data-action="prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="card-progress">
+            <span class="current">{{CARD_NUMBER}}</span>/<span class="total">{{CARD_TOTAL}}</span>
+        </div>
+        
+        <button class="control-btn next-card" data-action="next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <button class="control-btn shuffle-cards" data-action="shuffle">
+            <i class="fas fa-random"></i>
+        </button>
+        
+        <button class="control-btn auto-flip" data-action="auto">
+            <i class="fas fa-play"></i>
+        </button>
+    </div>
+    
+    <div class="card-stats">
+        <div class="stat">
+            <span class="stat-label">複習次數</span>
+            <span class="stat-value review-count">0</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label">掌握程度</span>
+            <span class="stat-value mastery">0%</span>
+        </div>
+        <div class="stat">
+            <span class="stat-label">上次複習</span>
+            <span class="stat-value last-review">從未</span>
+        </div>
+    </div>
+</div>
