@@ -1,0 +1,89 @@
+<!-- templates/header.html -->
+<header>
+    <div class="container nav-container">
+        <div class="logo">
+            <i class="fas fa-book-open"></i>
+            <a href="{{BASE_URL}}/" class="logo-link">
+                <span>DSE中文學習平台</span>
+            </a>
+        </div>
+        
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="{{BASE_URL}}/#articles" class="nav-link">
+                    <i class="fas fa-book"></i> 指定篇章
+                </a></li>
+                <li><a href="{{BASE_URL}}/#dse-guide" class="nav-link">
+                    <i class="fas fa-graduation-cap"></i> DSE指南
+                </a></li>
+                <li><a href="{{BASE_URL}}/#resources" class="nav-link">
+                    <i class="fas fa-tools"></i> 學習資源
+                </a></li>
+                <li><a href="{{BASE_URL}}/#about" class="nav-link">
+                    <i class="fas fa-info-circle"></i> 關於平台
+                </a></li>
+                <li>
+                    <a href="{{BASE_URL}}/#start-learning" class="nav-cta">
+                        <i class="fas fa-play-circle"></i> 開始學習
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="header-actions">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="搜索文章...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div class="search-results"></div>
+            </div>
+            
+            <button class="theme-toggle" aria-label="切換主題">
+                <i class="fas fa-moon"></i>
+            </button>
+            
+            <button class="nav-toggle" aria-label="導航菜單">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- 移動端導航菜單 -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <h3>導航菜單</h3>
+            <button class="close-nav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li><a href="{{BASE_URL}}/#articles">
+                <i class="fas fa-book"></i> 指定篇章
+            </a></li>
+            <li><a href="{{BASE_URL}}/#dse-guide">
+                <i class="fas fa-graduation-cap"></i> DSE指南
+            </a></li>
+            <li><a href="{{BASE_URL}}/#resources">
+                <i class="fas fa-tools"></i> 學習資源
+            </a></li>
+            <li><a href="{{BASE_URL}}/#about">
+                <i class="fas fa-info-circle"></i> 關於平台
+            </a></li>
+            <li><a href="{{BASE_URL}}/#contact">
+                <i class="fas fa-envelope"></i> 聯絡我們
+            </a></li>
+        </ul>
+        
+        <div class="mobile-nav-footer">
+            <a href="{{BASE_URL}}/#start-learning" class="btn btn-primary">
+                <i class="fas fa-play-circle"></i> 開始學習
+            </a>
+        </div>
+    </div>
+    
+    <!-- 進度條 -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="readingProgress"></div>
+    </div>
+</header>
