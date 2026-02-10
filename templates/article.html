@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} | DSE中文指定篇章學習平台</title>
+    <link rel="stylesheet" href="{{BASE_URL}}/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{BASE_URL}}/assets/images/favicon.ico">
+</head>
+<body>
+    <!-- 導航欄 -->
+    {{> header.html}}
+
+    <!-- 主內容區 -->
+    <main class="container">
+        <!-- 英雄區域 -->
+        <div class="hero">
+            <h1>{{TITLE}}</h1>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>作者：{{AUTHOR}}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-book"></i>
+                    <span>出處：{{SOURCE}}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-tag"></i>
+                    <span>體裁：{{GENRE}}</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-star"></i>
+                    <span>考核重點：{{ARTICLE_ID}}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 文章內容 -->
+        <article class="card">
+            {{{CONTENT}}}
+        </article>
+
+        <!-- 互動練習 -->
+        <section class="card interactive-section">
+            <div class="card-header">
+                <h2>互動練習 <span class="dse-tag">備考訓練</span></h2>
+                <div class="card-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+            
+            {{#if QUIZZES}}
+                {{#each QUIZZES}}
+                    {{> components/quiz.html}}
+                {{/each}}
+            {{/if}}
+        </section>
+
+        <!-- 記憶卡片 -->
+        {{#if MEMORY_CARDS}}
+        <section class="card">
+            <div class="card-header">
+                <h2>記憶卡片 <span class="dse-tag">學習工具</span></h2>
+                <div class="card-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+            </div>
+            
+            <div class="section-grid">
+                {{#each MEMORY_CARDS}}
+                    {{> components/memory-card.html}}
+                {{/each}}
+            </div>
+        </section>
+        {{/if}}
+    </main>
+
+    <!-- 頁腳 -->
+    {{> footer.html}}
+
+    <!-- JavaScript -->
+    <script src="{{BASE_URL}}/assets/js/app.js"></script>
+    <script>
+        // 文章特定配置
+        const articleConfig = {
+            id: '{{ARTICLE_ID}}',
+            title: '{{TITLE}}',
+            baseUrl: '{{BASE_URL}}'
+        };
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeArticle(articleConfig);
+        });
+    </script>
+</body>
+</html>
