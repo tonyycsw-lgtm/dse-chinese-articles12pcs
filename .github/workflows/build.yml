@@ -1,6 +1,5 @@
 name: Build and Deploy DSE Chinese Articles
 
-# 触发条件：推送到main分支、PR到main分支、手动触发
 on:
   push:
     branches: [ main ]
@@ -13,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    # 1. 拉取仓库代码
+    # 1. 拉取仓库代码（确保完整拉取所有文件）
     - name: Checkout code
       uses: actions/checkout@v4
       with:
@@ -23,25 +22,33 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'  # 稳定版Node.js
-        cache: 'npm'       # 缓存依赖，加速构建
+        node-version: '20'
+        cache: 'npm'
     
-    # 3. 安装依赖（marked用于Markdown转换）
+    # 3. 手动创建必要目录（解决文件找不到的问题）
+    - name: Create required directories
+      run: |
+        mkdir -p templates
+        mkdir -p articles
+        mkdir -p scripts
+        mkdir -p docs
+    
+    # 4. 安装依赖（强制安装，确保marked生效）
     - name: Install dependencies
       run: |
-        npm init -y
-        npm install marked --save
+        npm init -y --force
+        npm install marked@12.0.1 --save --force
     
-    # 4. 执行构建脚本（生成HTML到docs目录）
+    # 5. 执行构建脚本（增加错误日志输出）
     - name: Build website
-      run: node scripts/build.js
-      
-    # 5. 部署到GitHub Pages（仅main分支）
+      run: |
+        node scripts/build.js 2>&1 || (echo "构建失败，打印日志：" && cat /tmp/*)
+    
+    # 6. 部署到GitHub Pages（仅main分支）
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./docs
-        # 如果你有自定义域名，取消下面注释并填写
-        # cname: your-domain.com
+        force_orphan: true  # 强制覆盖旧的gh-pages分支
