@@ -1,0 +1,97 @@
+<!-- templates/components/quiz.html -->
+<div class="quiz-component" data-quiz-index="{{QUIZ_INDEX}}">
+    <div class="quiz-header">
+        <h4 class="quiz-title">
+            <i class="fas fa-question-circle"></i>
+            問題 {{QUIZ_NUMBER}}
+            {{#if QUIZ_POINTS}}
+            <span class="quiz-points">{{QUIZ_POINTS}}分</span>
+            {{/if}}
+        </h4>
+        {{#if QUIZ_DIFFICULTY}}
+        <span class="quiz-difficulty difficulty-{{QUIZ_DIFFICULTY}}">
+            {{QUIZ_DIFFICULTY_TEXT}}
+        </span>
+        {{/if}}
+        {{#if QUIZ_DSE_TOPIC}}
+        <span class="quiz-topic">{{QUIZ_DSE_TOPIC}}</span>
+        {{/if}}
+    </div>
+    
+    <div class="quiz-body">
+        <div class="quiz-question">
+            {{{QUIZ_QUESTION}}}
+        </div>
+        
+        <div class="quiz-options">
+            {{#each QUIZ_OPTIONS}}
+            <div class="quiz-option" data-option-index="{{@index}}" data-correct="{{this.correct}}">
+                <div class="option-letter">{{this.letter}}</div>
+                <div class="option-content">
+                    {{{this.text}}}
+                </div>
+                {{#if this.points}}
+                <div class="option-points">{{this.points}}分</div>
+                {{/if}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    
+    <div class="quiz-footer">
+        <button class="btn btn-secondary check-answer-btn">
+            <i class="fas fa-check"></i> 檢查答案
+        </button>
+        
+        <div class="quiz-hint">
+            <button class="hint-toggle">
+                <i class="fas fa-lightbulb"></i> 顯示提示
+            </button>
+            <div class="hint-content">
+                {{#if QUIZ_HINT}}
+                {{{QUIZ_HINT}}}
+                {{else}}
+                仔細閱讀問題，排除明顯錯誤的選項。
+                {{/if}}
+            </div>
+        </div>
+        
+        <div class="quiz-stats">
+            <span class="attempts">
+                <i class="fas fa-history"></i> 嘗試次數: <span>0</span>
+            </span>
+            <span class="correct-rate">
+                <i class="fas fa-chart-line"></i> 正確率: <span>0%</span>
+            </span>
+        </div>
+    </div>
+    
+    <div class="quiz-feedback">
+        <div class="feedback-header">
+            <h5><i class="fas fa-comment-dots"></i> 答案解析</h5>
+            <button class="close-feedback">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="feedback-content">
+            {{{QUIZ_EXPLANATION}}}
+        </div>
+        <div class="feedback-meta">
+            <span class="correct-answer">
+                正確答案: <strong>{{QUIZ_CORRECT_ANSWER}}</strong>
+            </span>
+            <span class="time-spent">
+                建議用時: {{QUIZ_TIME}}秒
+            </span>
+        </div>
+    </div>
+    
+    <div class="quiz-progress">
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <div class="progress-text">
+            進度: <span class="current">0</span>/<span class="total">1</span>
+        </div>
+    </div>
+</div>
