@@ -1,54 +1,73 @@
-name: Build and Deploy DSE Chinese Articles
+name: Build and Deploy DSE Chinese Learning Platform
 
 on:
+  # 在main分支有push時觸發
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  
+  # 手動觸發
   workflow_dispatch:
+  
+  # 定時構建（每天凌晨）
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
-    # 1. 拉取仓库代码（确保完整拉取所有文件）
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0
     
-    # 2. 配置Node.js环境
     - name: Setup Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v3
       with:
-        node-version: '20'
+        node-version: '18'
         cache: 'npm'
     
-    # 3. 手动创建必要目录（解决文件找不到的问题）
-    - name: Create required directories
-      run: |
-        mkdir -p templates
-        mkdir -p articles
-        mkdir -p scripts
-        mkdir -p docs
-    
-    # 4. 安装依赖（强制安装，确保marked生效）
     - name: Install dependencies
       run: |
-        npm init -y --force
-        npm install marked@12.0.1 --save --force
-    
-    # 5. 执行构建脚本（增加错误日志输出）
+        npm init -y
+        npm install marked
+        
     - name: Build website
       run: |
-        node scripts/build.js 2>&1 || (echo "构建失败，打印日志：" && cat /tmp/*)
+        node scripts/build.js
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: built-website
+        path: docs/
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
     
-    # 6. 部署到GitHub Pages（仅main分支）
+    # 只部署main分支
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: built-website
+        
     - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v4
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs
-        force_orphan: true  # 强制覆盖旧的gh-pages分支
+        publish_dir: ./
+        publish_branch: gh-pages
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy DSE Chinese Learning Platform - ${{ github.sha }}'
+        
+    - name: Send notification
+      if: always()
+      run: |
+        echo "Build and deploy completed!"
+        echo "Site URL: https://tonyycsw-lgtm.github.io/dse-chinese-articles12pcs/"
