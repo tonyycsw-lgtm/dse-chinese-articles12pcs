@@ -1,0 +1,150 @@
+<!-- templates/footer.html -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DSE中文學習平台</h3>
+                <p class="footer-description">
+                    專為香港中學文憑考試（DSE）中文科設計的完整學習解決方案，
+                    幫助學生高效備考，提升語文素養。
+                </p>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact@chinese-learning.hk</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+852 1234 5678</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>香港九龍塘</span>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>指定篇章</h3>
+                <ul class="footer-links">
+                    <li><a href="{{BASE_URL}}/xunzi-qinxue.html">
+                        <i class="fas fa-chevron-right"></i> 荀子《勤學》
+                    </a></li>
+                    <li><a href="{{BASE_URL}}/mengzi-renyi.html">
+                        <i class="fas fa-chevron-right"></i> 孟子《論仁義》
+                    </a></li>
+                    <li><a href="{{BASE_URL}}/zhuangzi-xiaoyaoyou.html">
+                        <i class="fas fa-chevron-right"></i> 莊子《逍遙遊》
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fas fa-chevron-right"></i> 論語《論仁》
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fas fa-chevron-right"></i> 史記《廉頗藺相如列傳》
+                    </a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>學習工具</h3>
+                <ul class="footer-links">
+                    <li><a href="#">
+                        <i class="fas fa-brain"></i> 互動測驗
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fas fa-layer-group"></i> 記憶卡片
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fas fa-pen-fancy"></i> 寫作練習
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fas fa-chart-line"></i> 進度追蹤
+                    </a></li>
+                    <li><a href="#">
+                        <i class="fas fa-book"></i> 錯題本
+                    </a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>快速連結</h3>
+                <ul class="footer-links">
+                    <li><a href="{{BASE_URL}}/#dse-guide">
+                        <i class="fas fa-info-circle"></i> DSE考試指南
+                    </a></li>
+                    <li><a href="{{BASE_URL}}/#resources">
+                        <i class="fas fa-download"></i> 學習資源下載
+                    </a></li>
+                    <li><a href="{{BASE_URL}}/#faq">
+                        <i class="fas fa-question-circle"></i> 常見問題
+                    </a></li>
+                    <li><a href="{{BASE_URL}}/#contact">
+                        <i class="fas fa-envelope"></i> 聯絡我們
+                    </a></li>
+                    <li><a href="{{BASE_URL}}/#privacy">
+                        <i class="fas fa-shield-alt"></i> 隱私政策
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="footer-stats">
+                <div class="stat">
+                    <i class="fas fa-book"></i>
+                    <span class="stat-number" id="articleCount">12</span>
+                    <span class="stat-label">指定篇章</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span class="stat-number" id="userCount">1,234</span>
+                    <span class="stat-label">學習用戶</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-clock"></i>
+                    <span class="stat-number" id="studyHours">5,678</span>
+                    <span class="stat-label">學習時數</span>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>
+                    &copy; <span id="currentYear"></span> DSE中文指定篇章學習平台 | 
+                    本平台內容僅供學習參考
+                </p>
+                <div class="footer-links-small">
+                    <a href="{{BASE_URL}}/sitemap.xml">網站地圖</a> | 
+                    <a href="{{BASE_URL}}/articles.json">文章索引</a> | 
+                    <a href="{{BASE_URL}}/#privacy">隱私政策</a> | 
+                    <a href="{{BASE_URL}}/#terms">使用條款</a>
+                </div>
+                <p class="footer-note">
+                    最後更新: {{BUILD_DATE}} | 
+                    平台版本: v1.0.0 | 
+                    DSE版本: 2024-2025學年
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- 返回頂部按鈕 -->
+<button class="back-to-top" aria-label="返回頂部">
+    <i class="fas fa-chevron-up"></i>
+</button>
