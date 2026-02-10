@@ -1,0 +1,42 @@
+{
+  "name": "dse-chinese-articles12pcs",
+  "version": "1.0.0",
+  "description": "DSE中文指定篇章學習平台 - 基於GitHub Pages的現代化學習平台",
+  "main": "scripts/build.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/dev-server.js",
+    "test": "echo \"No tests specified\" && exit 0",
+    "preview": "npx serve docs",
+    "clean": "rm -rf docs && mkdir docs"
+  },
+  "keywords": [
+    "dse",
+    "chinese",
+    "education",
+    "learning-platform",
+    "github-pages",
+    "markdown"
+  ],
+  "author": "Tony YC SW",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonyycsw-lgtm/dse-chinese-articles12pcs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tonyycsw-lgtm/dse-chinese-articles12pcs/issues"
+  },
+  "homepage": "https://tonyycsw-lgtm.github.io/dse-chinese-articles12pcs",
+  "dependencies": {
+    "marked": "^9.1.0"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
